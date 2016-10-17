@@ -1,20 +1,16 @@
 <template>
   <div>
-    <!-- <div class="select">
-        <div class="select-title"><span>4399游戏盒</span><b></b></div>
-        <div class="select-list">
-            <div class="select-list-inner">
-                <ul>
-                    <li>4399游戏盒</li>
-                    <li>4399游戏吧</li>
-                </ul>
-            </div>
-        </div>
-    </div> -->
-    <!-- <Select
-      :value.sync="selectData.selected"
-      :options="[selectData.options]"
-      :on-search="selectData.getOptions"></Select> -->
+    <div class="select-container">
+      <el-select
+        v-model="selectData.selected"
+        placeholder="4399积分墙">
+        <el-option
+          v-for="item in selectData.options"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
+    </div>
     <div class="add-app marg-t">
       <form class="add-form clearfix">
         <ul class="f-head">
@@ -40,20 +36,14 @@
 </template>
 
 <script>
-import Select from 'element-ui/lib/select';
-import 'element-ui/lib/theme-default/select.css';
 
 export default {
-  components : { Select },
   data () {
     return {
       msg: 'Info!',
       selectData: {
-        selected: {label: '所有应用'},
-        options: [{label: '所有应用'}, {label: '4399游戏盒'}, {label: '4399游戏吧'}],
-        getOptions: function(){
-
-        }
+        selected: {label: '4399积分墙'},
+        options: [{label: '4399积分墙'}, {label: '4399游戏盒'}, {label: '4399游戏吧'}]
       }
     }
   }
@@ -62,6 +52,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+
+.select-container{
+  width: 200px;
+}
 
 .add-app{
   width: 100%;

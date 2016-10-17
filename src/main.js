@@ -12,6 +12,11 @@ import Income from './components/Income'
 import Info from './components/Info'
 import AppList from './components/AppList'
 
+import Element from 'element-ui'
+import 'element-ui/lib/theme-default/index.css'
+
+Vue.use(Element);
+
 Vue.use(VueRouter);
 Vue.use(Vuex);
 

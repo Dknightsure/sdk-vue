@@ -43,17 +43,16 @@
       </li>
     </ul>
     <div class="m-con">
-      <div class="select" id="btn-app-picker">
-          <div class="select-title"><span>所有应用</span><b></b></div>
-          <div class="select-list">
-              <div class="select-list-inner">
-                  <ul>
-                      <li>所有应用</li>
-                      <li>4399游戏盒</li>
-                      <li>4399游戏吧</li>
-                  </ul>
-              </div>
-          </div>
+      <div class="select-container">
+        <el-select
+          v-model="appSelect.value"
+          placeholder="所有应用">
+          <el-option
+            v-for="item in appSelect.options"
+            :label="item.label"
+            :value="item.value">
+          </el-option>
+        </el-select>
       </div>
       <div class="chart-container">
         <h2 class="page-index">收入趋势</h2>
@@ -81,20 +80,17 @@
             </div>
           </div>
           <div id="btn-custome-time" class="btn-c-time"></div>
-          <div class="select s-time-picker" id="btn-time-picker">
-              <div class="select-title"><span>过去7天</span><b></b></div>
-              <div class="select-list">
-                  <div class="select-list-inner">
-                      <ul>
-                          <li>过去7天</li>
-                          <li>过去30天</li>
-                          <li>过去60天</li>
-                          <li>
-                            自定义时间
-                          </li>
-                      </ul>
-                  </div>
-              </div>
+          <div class="select-container timeSelect">
+            <div class="select-container">
+              <el-select
+                v-model="timeSelect.value"
+                placeholder="最近7天">
+                <el-option
+                  v-for="item in timeSelect.options"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
           </div>
         </div>
         <div id="datePicker"></div>
@@ -152,7 +148,14 @@
 export default {
   data () {
     return {
-      msg: 'Hello Index'
+      appSelect:{
+        value: '',
+        options: [{label: '所有应用', value: 1}, {label: '4399游戏吧', value: 2}, {label: '4399游戏盒', value: 3}, {label: '4399手游', value: 4}]
+      },
+      timeSelect:{
+        value: '',
+        options: [{label: '最近7天', value: 1}, {label: '最近30天', value: 2}, {label: '最近60天', value: 3}, {label: '自定义时间', value: 4}]
+      }
     }
   }
 }
@@ -160,6 +163,15 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+
+.select-container{
+  width: 200px;
+}
+
+.timeSelect{
+  float: right;
+  margin-right: 30px;
+}
 
 .select{
   height:40px;
