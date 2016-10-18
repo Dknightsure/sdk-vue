@@ -141,7 +141,19 @@
 </template>
 
 <script>
+
+import echarts from 'echarts';
+import option from '../data/echartsOptions.json'
+
 export default {
+  mounted: function(){
+    var chart = echarts.init(document.getElementById('j-chart'));
+    chart.setOption(option);
+    window.onresize = function () {
+        chart.resize();
+    };
+  },
+
   data () {
     return {
       appCount: 5,
@@ -199,100 +211,6 @@ export default {
 .timeSelect{
   float: right;
   margin-right: 30px;
-}
-
-.select{
-  height:40px;
-  width:200px;
-  background-color: #ffffff;
-  position:relative;
-  box-shadow: 0 1px 4px #dde1eb;
-  border-radius: 3px;
-}
-
-.select-title{
-  font-size:14px;
-  line-height:40px;
-  width: 170px;
-  height:40px;
-  padding: 0 15px;
-  float:right;
-  cursor:pointer;
-  color: #333333;
-}
-
-.select-title span{
-  float:left;
-}
-
-.select-title b{
-  float:right;
-  width: 0;
-  height: 0;
-  line-height:0;
-  font-size:0;
-  vertical-align: top;
-  border-top: 4px solid #acb2bf;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  margin-top:18px;
-  display:inline;
-  margin-left:5px;
-  _border-color:#000 #fff #fff #fff;
-  overflow:hidden; display:inline;
-}
-
-.select-active .select-title b{
-  border-bottom: 4px solid #acb2bf;
-  border-top:0;
-  _border-color:#fff #fff #000 #fff;
-  _border-width:5px;
-  _border-style:solid;
-  _margin-top:8px;
-}
-
-.select-list{
-  position:absolute;
-  width:100%; top:45px;
-  display:none;
-  background-color:#fff;
-  box-shadow: 0 1px 4px #dde1eb;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-.select-list-inner{
-  border-radius:3px;
-}
-
-.select-list ul{
-  padding:5px 0;
-}
-
-.select-list ul li.divider{
-  background-color:#CCC;
-  height:1px;
-  overflow:hidden;
-  margin:5px 0;
-  line-height:0;
-  font-size:0;
-}
-
-.select-list ul li{
-  display:block;
-  text-decoration:none;
-  color:#333333;
-  padding:0 15px;
-  font-size:14px;
-  height:40px;
-  line-height:40px;
-  cursor: pointer;
-}
-
-.select-list ul li:hover,
-.select-list ul li.cur{
-  background-color:#f5f5f5;
-  text-decoration:none !important;
 }
 
 .t-con{

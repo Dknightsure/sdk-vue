@@ -1,0 +1,47 @@
+{
+    "xAxis":  {
+        "type": "category",
+        "boundaryGap": false,
+        "data": ["10-01","10-02","10-03","10-04","10-05","10-06","10-07"]
+    },
+    "yAxis": {
+        "type": "value",
+        "axisLabel": {
+            "formatter": "{value}"
+        }
+    },
+    "tooltip": {
+      "trigger": "item",
+      "backgroundColor": "#ffffff",
+      "padding": 10,
+      "extraCssText": "box-shadow: 0 1px 4px #dde1eb;",
+      "textStyle": {
+        "color": "#666666",
+        "fontSize": 14
+      },
+      "formatter": "日期：{b}<br />收入：￥{c}"
+    },
+    "series": [
+        {
+            "name": "收入",
+            "type": "line",
+            "lineStyle":{
+              "normal":{
+                "color": "#3aa1ff"
+              }
+            },
+            "itemStyle":{
+              "normal":{
+                "color": "#3aa1ff"
+              }
+            },
+            "data":[300, 200, 600, 800, 750, 120, 400],
+            "markPoint": {
+                "data": [
+                    {"type": "max", "name": "最大值"},
+                    {"type": "min", "name": "最小值"}
+                ]
+            }
+        }
+    ]
+}

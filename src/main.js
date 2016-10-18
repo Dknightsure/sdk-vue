@@ -21,7 +21,7 @@ Vue.use(VueRouter);
 Vue.use(Vuex);
 
 const routes = [
-  { path: '/', component: Income },
+  { path: '/', redirect: '/Income' },
   { path: '/SDKDownload', component: SDKDownload },
   { path: '/AddApp', component: AddApp },
   { path: '/Ad', component: Ad },
@@ -30,16 +30,11 @@ const routes = [
   { path: '/AppList', component: AppList }
 ]
 
-// 3. 创建 router 实例，然后传 `routes` 配置
 const router = new VueRouter({
-  routes, // （缩写）相当于 routes: routes
+  routes: routes,
+  linkActiveClass : 'active'
 })
 
-/* eslint-disable no-new */
-// new Vue({
-//   el: '#app',
-//   render: h => h(App)
-// })
 
 const app = new Vue({
   router,
