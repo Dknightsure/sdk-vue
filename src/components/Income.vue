@@ -6,7 +6,7 @@
           应用数
         </p>
         <p class="t-num">
-          3
+          {{ appCount }}
         </p>
       </li>
       <li>
@@ -14,7 +14,7 @@
           昨日收益
         </p>
         <p class="t-num">
-          475.654
+          {{ yesterdayIncome }}
         </p>
       </li>
       <li>
@@ -22,7 +22,7 @@
           七日收益
         </p>
         <p class="t-num">
-          475.654
+          {{ latest7dayIncome }}
         </p>
       </li>
       <li>
@@ -30,7 +30,7 @@
           总收益
         </p>
         <p class="t-num">
-          74475.654
+          {{ totalIncome }}
         </p>
       </li>
       <li>
@@ -38,7 +38,7 @@
           可提现金额
         </p>
         <p class="t-num money">
-          875.654
+          {{ withdrawIncome }}
         </p>
       </li>
     </ul>
@@ -57,12 +57,14 @@
       <div class="chart-container">
         <h2 class="page-index">收入趋势</h2>
         <div class="clearfix h-time-container">
-          <ul class="c-length-pick">
-            <li class="cur">总收入</li>
-            <li>新增用户</li>
-            <li>活跃用户</li>
-          </ul>
-          <div class="icon-help">
+          <div class="button-container">
+            <el-button-group>
+              <el-button type="default" size="large">总收入</el-button>
+              <el-button type="default" size="large">新增用户</el-button>
+              <el-button type="default" size="large">活跃用户</el-button>
+            </el-button-group>
+          </div>
+          <div class="icon-help middle">
             <div class="i-help-tip">
               <ul class="i-help-head">
                 <li>总收入<span>：</span></li>
@@ -99,7 +101,7 @@
     </div>
     <div class="b-con">
       <h2 class="page-index fl">详细收入清单</h2>
-      <div class="icon-help">
+      <div class="icon-help bottom">
         <div class="i-help-tip">
           <ul class="i-help-head">
             <li>新增用户<span>：</span></li>
@@ -127,16 +129,10 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="odd"><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr class="odd"><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr class="odd"><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr class="odd"><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr class="odd"><td>2016年08月21日</td><td>154</td><td>2154</td><td>154</td><td>54</td><td>6385.248</td></tr>
-            <tr class="total"><td>总计</td><td>7843</td><td>57843</td><td>7843</td><td>843</td><td>25385.248</td></tr>
+            <tr v-for="item in incomeList">
+              <td>{{ item.date }}</td><td>{{ item.countOfNewUsers }}</td><td>{{ item.countOfActiveUsers }}</td><td>{{ item.incomeOfActive }}</td><td>{{ item.incomeOfMission }}</td><td>{{ item.totalIncome }}</td>
+            </tr>
+            <tr class="total"><td>总计</td><td>{{ total.countOfNewUsers }}</td><td>{{ total.countOfActiveUsers }}</td><td>{{ total.incomeOfActive }}</td><td>{{ total.incomeOfMission }}</td><td>{{ total.totalIncome }}</td></tr>
           </tbody>
         </table>
       </div>
@@ -148,6 +144,19 @@
 export default {
   data () {
     return {
+      appCount: 5,
+      yesterdayIncome: 475.654,
+      latest7dayIncome: 4756.654,
+      totalIncome: 74475.654,
+      withdrawIncome: 875.654,
+      incomeList: [
+        {date: '2016年08月21日', countOfNewUsers: 154, countOfActiveUsers: 154, incomeOfActive: 154, incomeOfMission: 54, totalIncome: 6385.248},
+        {date: '2016年08月21日', countOfNewUsers: 154, countOfActiveUsers: 154, incomeOfActive: 154, incomeOfMission: 54, totalIncome: 6385.248},
+        {date: '2016年08月21日', countOfNewUsers: 154, countOfActiveUsers: 56, incomeOfActive: 154, incomeOfMission: 54, totalIncome: 6285.248},
+        {date: '2016年08月21日', countOfNewUsers: 154, countOfActiveUsers: 154, incomeOfActive: 154, incomeOfMission: 54, totalIncome: 6385.248},
+        {date: '2016年08月21日', countOfNewUsers: 154, countOfActiveUsers: 154, incomeOfActive: 154, incomeOfMission: 54, totalIncome: 6385.248},
+        {date: '2016年08月21日', countOfNewUsers: 154, countOfActiveUsers: 34, incomeOfActive: 154, incomeOfMission: 54, totalIncome: 6385.248}
+      ],
       appSelect:{
         value: '',
         options: [{label: '所有应用', value: 1}, {label: '4399游戏吧', value: 2}, {label: '4399游戏盒', value: 3}, {label: '4399手游', value: 4}]
@@ -157,12 +166,31 @@ export default {
         options: [{label: '最近7天', value: 1}, {label: '最近30天', value: 2}, {label: '最近60天', value: 3}, {label: '自定义时间', value: 4}]
       }
     }
+  },
+  computed:{
+    total: function(){
+      var incomeList = this.incomeList;
+      var total = {countOfNewUsers: 0, countOfActiveUsers: 0, incomeOfActive: 0, incomeOfMission: 0, totalIncome: 0};
+      for(var i in incomeList){
+        total.countOfNewUsers += incomeList[i].countOfNewUsers;
+        total.countOfActiveUsers += incomeList[i].countOfActiveUsers;
+        total.incomeOfActive += incomeList[i].incomeOfActive;
+        total.incomeOfMission += incomeList[i].incomeOfMission;
+        total.totalIncome += incomeList[i].totalIncome;
+      }
+      return total;
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+
+.button-container{
+  margin-left: 20px;
+  float: left;
+}
 
 .select-container{
   width: 200px;
@@ -437,8 +465,11 @@ h2.page-index{
   tbody{
     color: #666666;
 
-    tr.odd{
+    tr:nth-child(odd){
       background-color: #f5f6f7;
+    }
+    tr.total{
+      background-color: #ffffff;
     }
   }
 }
@@ -475,6 +506,18 @@ h2.page-index{
 
 .icon-help:hover{
   background: url(../assets/images/help-hover.png) no-repeat center center;
+}
+
+.icon-help.middle:hover{
+  .i-help-tip{
+    display: block;
+  }
+}
+
+.icon-help.bottom:hover{
+  .i-help-tip{
+    display: block;
+  }
 }
 
 .i-help-tip{
