@@ -2,12 +2,12 @@
   <div id="app">
     <div class="left-nav">
       <ul class="nav-ul">
-        <li v-bind:class="['li-index', {'cur': currentPage.isIndex}]" v-on:click="changeContent('isIndex')"><router-link to="/Income" ><i></i>收入概况</router-link></li>
-        <li v-bind:class="['li-addApp', {'cur': currentPage.isAddApp}]" v-on:click="changeContent('isAddApp')"><router-link to="/AddApp" ><i></i>添加应用</router-link></li>
-        <li v-bind:class="['li-appList', {'cur': currentPage.isAppList}]" v-on:click="changeContent('isAppList')"><router-link to="/AppList" ><i></i>应用列表</router-link></li>
-        <li v-bind:class="['li-info', {'cur': currentPage.isInfo}]" v-on:click="changeContent('isInfo')"><router-link to="/Info" ><i></i>应用详情</router-link></li>
-        <li v-bind:class="['li-ad', {'cur': currentPage.isAd}]" v-on:click="changeContent('isAd')"><router-link to="/ad" ><i></i>广告屏蔽</router-link></li>
-        <li v-bind:class="['li-download', {'cur': currentPage.isDownload}]" v-on:click="changeContent('isDownload')"><router-link to="/SDKDownload" ><i></i>SDK下载</router-link></li>
+        <li><router-link to="/Income"  class="li-index"><i></i>收入概况</router-link></li>
+        <li><router-link to="/AddApp"  class="li-addApp"><i></i>添加应用</router-link></li>
+        <li><router-link to="/AppList"  class="li-appList"><i></i>应用列表</router-link></li>
+        <li><router-link to="/Info"  class="li-info"><i></i>应用详情</router-link></li>
+        <li><router-link to="/ad"  class="li-ad"><i></i>广告屏蔽</router-link></li>
+        <li><router-link to="/SDKDownload"  class="li-download"><i></i>SDK下载</router-link></li>
       </ul>
     </div>
     <UserHead></UserHead>
@@ -46,16 +46,6 @@ export default {
   data(){
     return {
       currentPage: { isIndex: true, isAddApp: false, isAppList: false, isInfo: false, isAd: false, isDownload: false }
-    }
-  },
-
-  methods: {
-    changeContent: function(message, event){
-      var currentPage = this.currentPage;
-      for(var i in currentPage){
-        currentPage[i] = false;
-      }
-      currentPage[message] = true;
     }
   }
 }
@@ -132,9 +122,9 @@ body{
   background-color: #333741;
 
   li{
-    width: 147px;
+    width: 150px;
     height: 50px;
-    border-left: 3px solid #333741;
+    // border-left: 3px solid #333741;
     border-bottom: 1px solid #383e4b;
     color: #8494b8;
     font-size: 14px;
@@ -152,99 +142,89 @@ body{
       width: 147px;
       height: 50px;
       color: #8494b8;
+      border-left: 3px solid #333741;
+    }
+    a.active{
+      color: #fefefe;
+      border-left: 3px solid #6cb9ff;
+      background-color: #393f4d;
     }
     a:hover{
+      background-color: #393f4d;
+      border-left: 3px solid #6cb9ff;
       color: #fefefe;
     }
   }
 
-  li.cur{
-    background-color: #393f4d;
-    border-left: 3px solid #6cb9ff;
-    color: #fefefe;
-
-    a{
-      color: #fefefe
-    }
-  }
-
-  li.li-index i{
+  a.li-index i{
     background-position:0 -49px;width:20px;height:20px;
   }
 
-  li.cur.li-index i{
+  a.active.li-index i{
     background-position:0 -219px;width:20px;height:20px;
   }
 
-  li.li-addApp i{
+  a.li-addApp i{
     background-position:0 -315px;width:20px;height:20px;
   }
 
-  li.cur.li-addApp i{
+  a.active.li-addApp i{
     background-position:0 -145px;width:20px;height:20px;
   }
 
-  li.li-appList i{
+  a.li-appList i{
     background-position:0 0px;width:20px;height:19px;
   }
 
-  li.cur.li-appList i{
+  a.active.li-appList i{
     background-position:0 -170px;width:20px;height:19px;
   }
 
-  li.li-info i{
+  a.li-info i{
     background-position:0 -74px;width:20px;height:20px;
   }
 
-  li.cur.li-info i{
+  a.active.li-info i{
     background-position:0 -244px;width:20px;height:20px;
   }
 
-  li.li-ad i{
+  a.li-ad i{
     background-position:0 -290px;width:20px;height:20px;
   }
 
-  li.cur.li-ad i{
+  a.active.li-ad i{
     background-position:0 -120px;width:20px;height:20px;
   }
 
-  li.li-download i{
+  a.li-download i{
     background-position:0 -24px;width:20px;height:20px;
   }
 
-  li.cur.li-download i{
+  a.active.li-download i{
     background-position:0 -194px;width:20px;height:20px;
   }
 
-
-
-  li:hover{
-    background-color: #393f4d;
-    border-left: 3px solid #6cb9ff;
-    color: #fefefe;
-  }
-
-  li.li-index:hover i{
+  a.li-index:hover i{
     background-position:0 -219px;width:20px;height:20px;
   }
 
-  li.li-addApp:hover i{
+  a.li-addApp:hover i{
     background-position:0 -145px;width:20px;height:20px;
   }
 
-  li.li-appList:hover i{
+  a.li-appList:hover i{
     background-position:0 -170px;width:20px;height:19px;
   }
 
-  li.li-info:hover i{
+  a.li-info:hover i{
     background-position:0 -244px;width:20px;height:20px;
   }
 
-  li.li-ad:hover i{
+  a.li-ad:hover i{
     background-position:0 -120px;width:20px;height:20px;
   }
 
-  li.li-download:hover i{
+  a.li-download:hover i{
     background-position:0 -194px;width:20px;height:20px;
   }
 }
@@ -254,7 +234,7 @@ body{
   background-color: #f7f8fa;
   min-width: 1130px;
   overflow: auto;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
 }
 
 .content{

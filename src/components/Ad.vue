@@ -1,26 +1,26 @@
 <template>
   <div>
-    <div class="select">
-        <div class="select-title"><span>4399游戏盒</span><b></b></div>
-        <div class="select-list">
-            <div class="select-list-inner">
-                <ul>
-                    <li>4399游戏盒</li>
-                    <li>4399游戏吧</li>
-                </ul>
-            </div>
-        </div>
+    <div class="select-container">
+      <el-select
+        v-model="appSelect.value"
+        placeholder="4399游戏盒">
+        <el-option
+          v-for="item in appSelect.options"
+          :label="item.label"
+          :value="item.value">
+        </el-option>
+      </el-select>
     </div>
     <div class="blockAd-con">
       <h1>屏蔽广告 <span>( 请选择需要屏蔽的广告 )</span></h1>
-      <div class="b-t-con">
-        <ul class="c-app-pick">
-          <li class="cur">全部</li>
-          <li>已屏蔽应用</li>
-          <li>未屏蔽应用</li>
-        </ul>
-        <button type="button" class="btn-instant-work normal">立即生效</button>
+      <div class="select-group">
+        <el-button-group>
+          <el-button type="default" size="large">全部</el-button>
+          <el-button type="default" size="large">已屏蔽应用</el-button>
+          <el-button type="default" size="large">未屏蔽应用</el-button>
+        </el-button-group>
       </div>
+      <button type="button" class="btn-instant-work normal">立即生效</button>
       <div class="block-list">
         <table>
           <thead>
@@ -33,22 +33,19 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="odd">
+            <tr v-for="item in appList">
               <td>
-                <div class="checkbox-right">
-                  <input type="checkbox" id="ad-1" checked>
-                  <label for="ad-1"></label>
-                </div>
+                <el-checkbox class="checkbox" v-model="item.checked"></el-checkbox>
               </td>
               <td>
                 <img src="../assets/images/test.png"/>
               </td>
               <td>
-                水果直播
+                {{ item.name }}
               </td>
               <td>
                 <div class="b-price">
-                  0.4元
+                  {{ item.price + '元'}}
                   <ul class="price-of-day">
                     <li>第1天：<span>0.9393939393</span>元</li>
                     <li>第2天：<span>0.93</span>元</li>
@@ -62,87 +59,7 @@
                 </div>
               </td>
               <td>
-                 萌妹子、网红美女应有尽有
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="checkbox-right">
-                  <input type="checkbox" id="ad-2" checked>
-                  <label for="ad-2"></label>
-                </div>
-              </td>
-              <td>
-                <img src="../assets/images/test.png" />
-              </td>
-              <td>
-                水果直播
-              </td>
-              <td>
-                0.4元
-              </td>
-              <td>
-                 萌妹子、网红美女应有尽有
-              </td>
-            </tr>
-            <tr class="odd">
-              <td>
-                <div class="checkbox-right">
-                  <input type="checkbox" id="ad-3">
-                  <label for="ad-3"></label>
-                </div>
-              </td>
-              <td>
-                <img src="../assets/images/test.png" />
-              </td>
-              <td>
-                水果直播
-              </td>
-              <td>
-                0.4元
-              </td>
-              <td>
-                 萌妹子、网红美女应有尽有
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="checkbox-right">
-                  <input type="checkbox" id="ad-4" checked>
-                  <label for="ad-4"></label>
-                </div>
-              </td>
-              <td>
-                <img src="../assets/images/test.png" />
-              </td>
-              <td>
-                水果直播
-              </td>
-              <td>
-                0.4元
-              </td>
-              <td>
-                 萌妹子、网红美女应有尽有
-              </td>
-            </tr>
-            <tr class="odd">
-              <td>
-                <div class="checkbox-right">
-                  <input type="checkbox" id="ad-5" checked>
-                  <label for="ad-5"></label>
-                </div>
-              </td>
-              <td>
-                <img src="../assets/images/test.png" />
-              </td>
-              <td>
-                水果直播
-              </td>
-              <td>
-                0.4元
-              </td>
-              <td>
-                 萌妹子、网红美女应有尽有
+                 {{ item.adWords }}
               </td>
             </tr>
           </tbody>
@@ -162,7 +79,22 @@
 export default {
   data () {
     return {
-      msg: 'Hello Ad!'
+      appSelect: {
+        value: '',
+        options: [
+          {label: '4399游戏盒', value: 1},
+          {label: '4399游戏吧', value: 2}
+        ]
+      },
+      appList: [
+        { name: '水果直播', src: '../assets/images/test.png', price: 0.4, adWords: '萌妹子、网红美女应有尽有', checked: false},
+        { name: '斗鱼直播', src: '../assets/images/test.png', price: 0.4, adWords: '萌妹子、网红美女应有尽有', checked: false},
+        { name: '水果直播', src: '../assets/images/test.png', price: 0.4, adWords: '萌妹子、网红美女应有尽有', checked: false},
+        { name: '水果直播', src: '../assets/images/test.png', price: 0.4, adWords: '萌妹子、网红美女应有尽有', checked: false},
+        { name: '水果直播', src: '../assets/images/test.png', price: 0.4, adWords: '萌妹子、网红美女应有尽有', checked: false},
+        { name: '水果直播', src: '../assets/images/test.png', price: 0.4, adWords: '萌妹子、网红美女应有尽有', checked: false}
+      ],
+      checkedList: []
     }
   }
 }
@@ -171,103 +103,18 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
-.select{
-  height:40px;
-  width:200px;
-  background-color: #ffffff;
-  position:relative;
-  box-shadow: 0 1px 4px #dde1eb;
-  border-radius: 3px;
+.select-container{
+  width: 200px;
 }
 
-.select-title{
-  font-size:14px;
-  line-height:40px;
-  width: 170px;
-  height:40px;
-  padding: 0 15px;
-  float:right;
-  cursor:pointer;
-  color: #333333;
-}
-
-.select-title span{
-  float:left;
-}
-
-.select-title b{
-  float:right;
-  width: 0;
-  height: 0;
-  line-height:0;
-  font-size:0;
-  vertical-align: top;
-  border-top: 4px solid #acb2bf;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  margin-top:18px;
-  display:inline;
-  margin-left:5px;
-  _border-color:#000 #fff #fff #fff;
-  overflow:hidden; display:inline;
-}
-
-.select-active .select-title b{
-  border-bottom: 4px solid #acb2bf;
-  border-top:0;
-  _border-color:#fff #fff #000 #fff;
-  _border-width:5px;
-  _border-style:solid;
-  _margin-top:8px;
-}
-
-.select-list{
-  position:absolute;
-  width:100%; top:45px;
-  display:none;
-  background-color:#fff;
-  box-shadow: 0 1px 4px #dde1eb;
-  border-radius: 5px;
-  z-index: 1;
-}
-
-.select-list-inner{
-  border-radius:3px;
-}
-
-.select-list ul{
-  padding:5px 0;
-}
-
-.select-list ul li.divider{
-  background-color:#CCC;
-  height:1px;
-  overflow:hidden;
-  margin:5px 0;
-  line-height:0;
-  font-size:0;
-}
-
-.select-list ul li{
-  display:block;
-  text-decoration:none;
-  color:#333333;
-  padding:0 15px;
-  font-size:14px;
-  height:40px;
-  line-height:40px;
-  cursor: pointer;
-}
-
-.select-list ul li:hover,
-.select-list ul li.cur{
-  background-color:#f5f5f5;
-  text-decoration:none !important;
+.select-group{
+  float: left;
+  clear: both;
+  margin: 0 0 15px 20px;
 }
 
 .blockAd-con{
   background-color: #ffffff;
-  overflow: hidden;
   border-radius: 6px;
   box-shadow: 0 1px 4px #dde1eb;
   margin-top: 20px;
@@ -408,7 +255,7 @@ table{
       text-decoration: underline;
     }
 
-    tr.odd{
+    tr:nth-child(odd){
       background-color: #f5f6f7;
     }
 
@@ -464,7 +311,14 @@ input[type=checkbox]{
   position: relative;
 }
 
+.b-price:hover{
+  & > .price-of-day{
+    display: block;
+  }
+}
+
 .price-of-day{
+  display: none;
   position: absolute;
   font-size: 12px;
   line-height: 16px;
