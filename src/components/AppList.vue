@@ -10,61 +10,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr class="odd">
-            <td><a href="#">4399游戏盒</a></td><td>盒币</td><td>50</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>www.4399.com</td>
+          <tr v-for="item in appList">
             <td>
-              <div class="Switch Switch_FlatCircular On">
-                <div class="SwitchLine"></div>
-                <span class="SwitchButton"></span>
-              </div>
-              <div class="icon-edit">
-                <div class="edit-tip">
-                  编辑
-                  <div class="triangle-down"></div>
-                  <div class="triangle-down-top"></div>
-                </div>
-              </div>
+              <a href="#">{{ item.name }}</a>
             </td>
-          </tr>
-          <tr>
-            <td><a href="#">4399游戏盒</a></td><td>盒币</td><td>50</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>www.4399.com</td>
+            <td>{{ item.unit }}</td>
+            <td>{{ item.percent }}</td>
+            <td>{{ item.callbackKey }}</td>
+            <td>{{ item.sdkKey }}</td>
+            <td>{{ item.callbackAddress }}</td>
             <td>
-              <div class="Switch Switch_FlatCircular Off">
-                <div class="SwitchLine"></div>
-                <span class="SwitchButton"></span>
-              </div>
-              <div class="icon-edit">
-                <div class="edit-tip">
-                  编辑
-                  <div class="triangle-down"></div>
-                  <div class="triangle-down-top"></div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr class="odd">
-            <td><a href="#">4399游戏盒</a></td><td>盒币</td><td>50</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>www.4399.com</td>
-            <td>
-              <div class="Switch Switch_FlatCircular On">
-                <div class="SwitchLine"></div>
-                <span class="SwitchButton"></span>
-              </div>
-              <div class="icon-edit">
-                <div class="edit-tip">
-                  编辑
-                  <div class="triangle-down"></div>
-                  <div class="triangle-down-top"></div>
-                </div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#">4399游戏盒</a></td><td>盒币</td><td>50</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>d3374fc28aa532a783f06e1d7a55qjwe</td><td>www.4399.com</td>
-            <td>
-              <div class="Switch Switch_FlatCircular On">
-                <div class="SwitchLine"></div>
-                <span class="SwitchButton"></span>
-              </div>
+              <el-switch
+                v-model="item.isOn"
+                on-color="#8fd362"
+                off-color="#c2c6cc">
+              </el-switch>
               <div class="icon-edit">
                 <div class="edit-tip">
                   编辑
@@ -84,7 +44,62 @@
 export default {
   data () {
     return {
-      msg: 'Hello AppList!'
+      appList: [
+        {
+          name: '4399游戏盒',
+          unit: '盒币',
+          percent: 50,
+          callbackKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          sdkKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          callbackAddress: 'www.4399.com',
+          isOn: true
+        },
+        {
+          name: '4399游戏盒',
+          unit: '盒币',
+          percent: 50,
+          callbackKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          sdkKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          callbackAddress: 'www.4399.com',
+          isOn: false
+        },
+        {
+          name: '4399游戏盒',
+          unit: '盒币',
+          percent: 50,
+          callbackKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          sdkKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          callbackAddress: 'www.4399.com',
+          isOn: false
+        },
+        {
+          name: '4399游戏盒',
+          unit: '盒币',
+          percent: 50,
+          callbackKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          sdkKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          callbackAddress: 'www.4399.com',
+          isOn: true
+        },
+        {
+          name: '4399游戏盒',
+          unit: '盒币',
+          percent: 50,
+          callbackKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          sdkKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          callbackAddress: 'www.4399.com',
+          isOn: false
+        },
+        {
+          name: '4399游戏盒',
+          unit: '盒币',
+          percent: 50,
+          callbackKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          sdkKey: 'd3374fc28aa532a783f06e1d7a55qjwe',
+          callbackAddress: 'www.4399.com',
+          isOn: true
+        }
+      ]
     }
   }
 }
@@ -162,7 +177,7 @@ h1{
         text-decoration: underline;
       }
 
-      tr.odd{
+      tr:nth-child(odd){
         background-color: #f5f6f7;
       }
 
@@ -243,106 +258,4 @@ h1{
     display: block;
   }
 }
-
-/* FlatCircular */
-.Switch_FlatCircular {
-    position: relative;
-    width: 58px;
-    height: 18px;
-    cursor: pointer;
-    display: inline-block;
-    vertical-align: middle;
-    background-color: #c2c6cc;
-    border-radius: 9px;
-}
-
-.Switch_FlatCircular .SwitchLine:after{
-  visibility: visible;
-}
-
-.Switch_FlatCircular .SwitchLine:before{
-  visibility: hidden;
-}
-
-.Switch_FlatCircular.On .SwitchLine:before{
-  visibility: visible;
-}
-
-.Switch_FlatCircular.On .SwitchLine:after{
-  visibility: hidden;
-}
-
-.Switch_FlatCircular .SwitchLine:before {
-    position: absolute;
-    content: "已开启";
-    color: #fff;
-    font-size: 12px;
-    left: 4px;
-    top: 0;
-}
-
-.Switch_FlatCircular .SwitchLine:after {
-    position: absolute;
-    content: "已隐藏";
-    color: #fff;
-    font-size: 12px;
-    right: 4px;
-    top: 0;
-}
-
-.Switch_FlatCircular .SwitchButton {
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    left: 2px;
-    top: 1px;
-    z-index: 2;
-    background-color: #fff;
-    border-radius: 8px;
-}
-
-.Switch, .Switch * {
-    -webkit-transition-property: all;
-    -moz-transition-property: all;
-    -o-transition-property: all;
-    transition-property: all;
-    -webkit-transition-duration: 0.2s;
-    -moz-transition-duration: 0.2s;
-    -o-transition-duration: 0.2s;
-    transition-duration: 0.2s;
-    -webkit-transition-delay: 0s;
-    -moz-transition-delay: 0s;
-    -o-transition-delay: 0s;
-    transition-delay: 0s;
-    box-sizing: border-box !important;
-}
-
-.Switch_FlatCircular.On {
-    background-color: #8fd362;
-}
-
-.Switch_FlatCircular.On .SwitchLine {
-}
-
-.Switch_FlatCircular.On .SwitchButton {
-    border: 1px solid #a7cce9;
-    left: 41px;
-}
-
-.Switch_FlatCircular.On .SwitchButton:after, .Switch_FlatCircular.On .SwitchButton:before {
-    background-color: #a7cce9;
-}
-
-.Switch_FlatCircular.Disabled {
-    opacity: 0.3;
-}
-
-.Switch_FlatCircular.Disabled .SwitchButton {
-    /*opacity:0.5;*/
-}
-
-.Switch_FlatCircular.On.Disabled .SwitchLine {
-    /*opacity:0.5;*/
-}
-
 </style>
